@@ -55,3 +55,12 @@ Cloud providers sell compute using CPU cores, RAM gigabytes, and execution time.
 1. **Avoid O(N²) or higher loops on request pathways:** They trigger autoscaling rules under minimal user traffic.
 2. **Stream large payloads (O(1) space):** Buffer data instead of accumulating full datasets in RAM to keep container allocations small.
 3. **Watch memory retention:** Retaining unneeded objects forces garbage collectors (GC) to run longer, spiking CPU usage and stalling response times.
+
+
+
+
+
+**What does client certificate mode means**
+TAGS: APP SERVICE
+
+In a standard HTTPS web request (one-way TLS), your client verifies the identity of the server via the server's SSL/TLS certificate. With Client Certificate Mode, the reverse happens as well: the server asks the incoming client to present a valid digital certificate to prove its identity before allowing access.
