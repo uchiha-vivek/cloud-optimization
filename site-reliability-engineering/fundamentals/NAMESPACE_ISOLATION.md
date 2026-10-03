@@ -89,3 +89,24 @@ if __name__ == "__main__":
 
 **SCENARIO**: Building a custom worker runner or daemon in Python that executes tasks for multiple clients (multi-tenancy) on shared compute nodes.
 
+**WHY NAMESPACES**
+
+- Hostname/UTS (CLONE_NEWUTS): Gives each worker process its own system identity.
+
+- IPC (CLONE_NEWIPC): Prevents client processes from sharing or tampering with shared memory segments or POSIX message queues used by other clients.
+
+- Cost Efficiency: Provides process isolation similar to Docker or LXC, but directly inside Python with near-zero overhead and no external container daemon dependencies.
+
+
+
+Problem You Want to Solve |	Use This Namespace
+
+Block network access or isolate IP addresses ->	CLONE_NEWNET
+
+Hide host processes & make script PID 1 ->	CLONE_NEWPID
+
+Restrict file system visibility & mounts ->	CLONE_NEWNS
+
+Run privileged-like setups without sudo	 -> CLONE_NEWUSER
+
+Change hostname without changing system default	-> CLONE_NEWUTS
